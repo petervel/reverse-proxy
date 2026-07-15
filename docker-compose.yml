@@ -5,9 +5,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx:/mnt/nginx-conf:ro
       - ./certbot/www:/var/www/certbot
       - ./certbot/letsencrypt:/etc/letsencrypt
+    command: ["nginx", "-g", "daemon off;", "-c", "/mnt/nginx-conf/nginx.conf"]
     networks:
       - web
     restart: unless-stopped
