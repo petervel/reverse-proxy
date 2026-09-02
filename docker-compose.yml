@@ -20,7 +20,6 @@ services:
       - ./certbot/letsencrypt:/etc/letsencrypt
     networks:
       - web
-    restart: unless-stopped
 
 networks:
   web:
